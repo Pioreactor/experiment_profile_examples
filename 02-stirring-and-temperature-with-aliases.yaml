@@ -1,7 +1,7 @@
 experiment_profile_name: stirring_and_temperature_with_aliases
 
 metadata:
-  author: Jane Doe
+  author: Cameron Davidson-Pilon
   description: An experiment profile for hot and cold temps in two pioreactors. Stop after 10 hours. 
 
 labels:
