@@ -13,11 +13,11 @@ pioreactors:
           - type: start
             hours_elapsed: 0.0
             options:
-              volume: 14.0
+              ml: 14.0
           - type: start
             hours_elapsed: 0.25
             options:
-              volume: 1.0
+              ml: 1.0
       led_intensity:
         actions:
           - type: start
