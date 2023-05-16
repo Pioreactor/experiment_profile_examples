@@ -1,0 +1,11 @@
+experiment_profile_name: start_stirring
+
+metadata:
+  author: Jane Doe
+  description: This profile starts stirring immediately on all worker Pioreactors
+
+common:
+  stirring:
+    actions:
+      - type: start
+        hours_elapsed: 0.0
