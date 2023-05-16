@@ -1,7 +1,7 @@
 experiment_profile_name: dosing and leds
 
 metadata:
-  author: John Doe
+  author: Cameron Davidson-Pilon
   description: dose, then dose a bit after 15 minutes. Change LEDs immediately, and again after an hour.
 
 
