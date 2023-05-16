@@ -1,7 +1,7 @@
 experiment_profile_name: start_stirring
 
 metadata:
-  author: Jane Doe
+  author: Cameron Davidson-Pilon
   description: This profile starts stirring immediately on all worker Pioreactors
 
 common:
