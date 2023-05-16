@@ -1,0 +1,41 @@
+experiment_profile_name: stirring_and_temperature_with_aliases
+
+metadata:
+  author: Jane Doe
+  description: An experiment profile for hot and cold temps in two pioreactors. Stop after 10 hours. 
+
+labels:
+  worker1: hot
+  worker2: cold
+
+common:
+  stirring:
+    actions:
+      - type: start
+        hours_elapsed: 0.0
+      - type: stop
+        hours_elapsed: 10.0
+  temperature_control:
+    actions:
+      - type: stop
+        hours_elapsed: 10.0
+
+pioreactors:
+  hot:
+    jobs:
+      temperature_control:
+        actions:
+          - type: start
+            hours_elapsed: 0.0
+            options:
+              automation_name: thermostat
+              target_temperature: 38
+  cold:
+    jobs:
+      temperature_control:
+        actions:
+          - type: start
+            hours_elapsed: 0.0
+            options:
+              automation_name: thermostat
+              target_temperature: 28
