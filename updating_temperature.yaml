@@ -1,0 +1,26 @@
+experiment_profile_name: updating_jobs
+
+metadata:
+  author: Cam Davidson-Pilon
+  description: A profile to immediately start stirring, heating to 30C, and, after 2h, update temperature to 35C.
+
+common:
+  stirring:
+    actions:
+      - type: start
+        hours_elapsed: 0.0
+        options:
+          target_rpm: 500.0
+  temperature_control:
+    actions:
+      - type: start # this starts the temperature_automation thermostat, so we don't need to start it, but we can ping it later.
+        hours_elapsed: 0.0
+        options:
+          automation_name: thermostat
+          target_temperature: 30
+  temperature_automation: # pinging thermostat
+    action:
+      - type: update
+        hours_elapsed: 2.0
+        options:
+          target_temperature: 35
