@@ -1,0 +1,48 @@
+experiment_profile_name: specifying_pioreactors
+
+metadata:
+  author: Cam Davidson-Pilon
+  description: A profile to immediately start stirring on three Pioreactors, but different temperatures. Also have aliases
+
+labels:
+  worker1: cool_32_5
+  worker2: control_35_0
+  worker3: hot_37_5
+
+common:
+  stirring:
+    actions:
+      - type: start
+        hours_elapsed: 0.0
+        options:
+          target_rpm: 500.0
+
+worker1:
+  jobs:
+    temperature_control:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+          options:
+            automation_name: thermostat
+            target_temperature: 32.5
+
+worker2:
+  jobs:
+    temperature_control:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+          options:
+            automation_name: thermostat
+            target_temperature: 35
+
+worker3:
+  jobs:
+    temperature_control:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+          options:
+            automation_name: thermostat
+            target_temperature: 37.5
