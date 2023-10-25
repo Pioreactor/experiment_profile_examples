@@ -1,0 +1,23 @@
+experiment_profile_name: pump_cleaning_script
+
+metadata:
+  description: This starts the waste pump on all Pioreactors, then the media pump, and runs both for X seconds and Y seconds respectively.
+  author: Cam DP
+ 
+common:
+  remove_waste:
+    actions:
+      - type: start
+        hours_elapsed: 0.0
+        options:
+           continuously: true
+      - type: stop
+        hours_elapsed: 0.033
+  add_media:
+    actions:
+      - type: start
+        hours_elapsed: 0.002
+        options:
+           continuously: true
+      - type: stop
+        hours_elapsed: 0.03
