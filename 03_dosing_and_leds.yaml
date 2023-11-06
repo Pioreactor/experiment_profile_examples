@@ -25,7 +25,7 @@ pioreactors:
             options:
               B: 50
               C: 50
-          - type: start
+          - type: u
             hours_elapsed: 1.0
             options:
               B: 25
