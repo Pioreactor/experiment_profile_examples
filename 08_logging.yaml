@@ -31,3 +31,4 @@ pioreactors:
             hours_elapsed: 0.01
             options:
               message: "Hello {unit} and {job} and {experiment}" # alerts the message "Hello worker1 and od_reading and _testing_experiment"
+              level: INFO # by default, it's NOTICE level. Can be DEBUG, INFO, NOTICE, WARNING, ERROR
