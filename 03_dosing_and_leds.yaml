@@ -25,9 +25,11 @@ pioreactors:
             options:
               B: 50
               C: 50
-          - type: u
+          - type: update
             hours_elapsed: 1.0
             options:
               B: 25
               C: 25
               D: 100
+          - type: stop
+            hours_elapsed: 1.5
