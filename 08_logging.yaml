@@ -22,11 +22,12 @@ common:
       - type: stop
         hours_elapsed: 0.05
 
-worker1:
-  jobs:
-    od_reading:
-      actions:
-        - type: log
-          hours_elapsed: 0.01
-          options:
-            message: "Hello {unit} and {job} and {experiment}" # alerts the message "Hello worker1 and od_reading and _testing_experiment"
+pioreactors:
+  worker1:
+    jobs:
+      od_reading:
+        actions:
+          - type: log
+            hours_elapsed: 0.01
+            options:
+              message: "Hello {unit} and {job} and {experiment}" # alerts the message "Hello worker1 and od_reading and _testing_experiment"
