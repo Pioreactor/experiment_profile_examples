@@ -1,0 +1,78 @@
+experiment_profile_name: temperature_variation_experiment_with_dosing
+
+metadata:
+  author: Pete Davidson
+  description: >
+    At start, stirring, temperature, and a chemostat (volume=1, duration=20) will start.
+    Start temperature is 35 C for all bioreactors.
+    After 24 hours, the temperature in pio-dev-00 will increase by 2 C every two hours until it reaches a maximum of 50 C, after which the temperature stays constant.
+    After 24 hours, the temperature in pio-dev-01 will increase by 1 C every two hours until it reaches a maximum of 50 C, after which the temperature stays constant.
+    After 24 hours, the temperature in pio-dev-02 will increase by 4 C every four hours until it reaches a maximum of 50 C, after which the temperature stays constant.
+
+common:
+  stirring:
+    actions:
+      - type: start
+        hours_elapsed: 0.0
+  dosing_control:
+    actions:
+      - type: start
+        hours_elapsed: 0.0
+        options:
+          automation_name: chemostat
+          volume: 1.0
+          duration: 20
+  temperature_control:
+    actions:
+      - type: start
+        hours_elapsed: 0.0
+        options:
+          automation_name: thermostat
+          target_temperature: 35
+
+pioreactors:
+  pio-dev-00:
+    jobs:
+      temperature_automation:
+        actions:
+          # Increasing temperature by 2°C every 2 hours until 50°C
+          - { type: update, hours_elapsed: 24.0, options: { target_temperature: 37 } }
+          - { type: update, hours_elapsed: 26.0, options: { target_temperature: 39 } }
+          - { type: update, hours_elapsed: 28.0, options: { target_temperature: 41 } }
+          - { type: update, hours_elapsed: 30.0, options: { target_temperature: 43 } }
+          - { type: update, hours_elapsed: 32.0, options: { target_temperature: 45 } }
+          - { type: update, hours_elapsed: 34.0, options: { target_temperature: 47 } }
+          - { type: update, hours_elapsed: 36.0, options: { target_temperature: 49 } }
+          - { type: update, hours_elapsed: 38.0, options: { target_temperature: 50 } }
+
+  pio-dev-01:
+    jobs:
+      temperature_automation:
+        actions:
+          # Increasing temperature by 1°C every 2 hours until 50°C
+          - { type: update, hours_elapsed: 24.0, options: { target_temperature: 36 } }
+          - { type: update, hours_elapsed: 26.0, options: { target_temperature: 37 } }
+          - { type: update, hours_elapsed: 28.0, options: { target_temperature: 38 } }
+          - { type: update, hours_elapsed: 30.0, options: { target_temperature: 39 } }
+          - { type: update, hours_elapsed: 32.0, options: { target_temperature: 40 } }
+          - { type: update, hours_elapsed: 34.0, options: { target_temperature: 41 } }
+          - { type: update, hours_elapsed: 36.0, options: { target_temperature: 42 } }
+          - { type: update, hours_elapsed: 38.0, options: { target_temperature: 43 } }
+          - { type: update, hours_elapsed: 40.0, options: { target_temperature: 44 } }
+          - { type: update, hours_elapsed: 42.0, options: { target_temperature: 45 } }
+          - { type: update, hours_elapsed: 44.0, options: { target_temperature: 46 } }
+          - { type: update, hours_elapsed: 46.0, options: { target_temperature: 47 } }
+          - { type: update, hours_elapsed: 48.0, options: { target_temperature: 48 } }
+          - { type: update, hours_elapsed: 50.0, options: { target_temperature: 49 } }
+          - { type: update, hours_elapsed: 52.0, options: { target_temperature: 50 } }
+
+
+  pio-dev-02:
+    jobs:
+      temperature_automation:
+        actions:
+          # Increasing temperature by 4°C every 4 hours until 50°C
+          - { type: update, hours_elapsed: 24.0, options: { target_temperature: 39 } }
+          - { type: update, hours_elapsed: 28.0, options: { target_temperature: 43 } }
+          - { type: update, hours_elapsed: 32.0, options: { target_temperature: 47 } }
+          - { type: update, hours_elapsed: 36.0, options: { target_temperature: 50 } }
