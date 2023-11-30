@@ -1,0 +1,26 @@
+experiment_profile_name: night_day_cycle
+
+metadata:
+  author: Cameron
+  description: >
+    This profile initiates a light-dark cycle to simulate night and day conditions,
+    starts stirring for optimal culture mixing, and begins OD reading for growth monitoring.
+
+common:
+  stirring:
+    actions:
+      - type: start
+        hours_elapsed: 0.0
+  od_reading:
+    actions:
+      - type: start
+        hours_elapsed: 0.0
+  led_control:
+    actions:
+      - type: start
+        hours_elapsed: 0.0
+        options:
+          automation_name: light_dark_cycle
+          light_intensity: 50
+          light_duration_minutes: 400
+          dark_duration_minutes: 200
