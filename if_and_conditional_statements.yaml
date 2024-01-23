@@ -1,0 +1,31 @@
+experiment_profile_name: conditional_statements
+
+metadata:
+  author: Cam Davidson-Pilon
+  description: A  profile to demonstrate conditional_statements as `if`
+
+pioreactors:
+  worker1:
+    jobs: 
+      stirring:
+        actions:
+          - type: start
+            options:
+              target_rpm: 500
+      od_reading:
+        actions:
+          - type: log
+            if: False
+            hours_elapsed: 0.001
+            options:
+              message: "I'm not executed"
+          - type: log
+            if: 10 > 5 # true, obviously
+            hours_elapsed: 0.001
+            options:
+              message: "I am executed"
+          - type: start
+            if: (worker1:stirring:target_rpm >= 400) and (worker1:stirring:target_rpm <= 650) # maybe true?
+            hours_elapsed: 0.002
+
+
