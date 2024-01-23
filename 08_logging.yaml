@@ -5,22 +5,23 @@ metadata:
   description: A  profile to demonstrate logging, start stirring in your Pioreactor(s), update RPM at 90 seconds, and turn off after 180 seconds.
 
 common:
-  stirring:
-    actions:
-      - type: start
-        hours_elapsed: 0.0
-        options:
-          target_rpm: 400.0
-      - type: log
-        hours_elapsed: 0.025
-        options:
-          message: "{job} increasing to 800 RPM" # alerts the message: "stirring increasing to 800 RPM"
-      - type: update
-        hours_elapsed: 0.025
-        options:
-          target_rpm: 800.0
-      - type: stop
-        hours_elapsed: 0.05
+  jobs:
+    stirring:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+          options:
+            target_rpm: 400.0
+        - type: log
+          hours_elapsed: 0.025
+          options:
+            message: "{job} increasing to 800 RPM" # alerts the message: "stirring increasing to 800 RPM"
+        - type: update
+          hours_elapsed: 0.025
+          options:
+            target_rpm: 800.0
+        - type: stop
+          hours_elapsed: 0.05
 
 pioreactors:
   worker1:
