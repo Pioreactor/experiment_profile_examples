@@ -10,6 +10,7 @@ pioreactors:
       stirring:
         actions:
           - type: start
+            hours_elapsed: 0.0
             options:
               target_rpm: 500
       od_reading:
