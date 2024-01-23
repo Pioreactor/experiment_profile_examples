@@ -4,24 +4,23 @@ metadata:
   author: Cameron Davidson-Pilon
   description: An experiment profile for hot and cold temps in two pioreactors. Stop after 10 hours. 
 
-labels:
-  worker1: hot
-  worker2: cold
 
 common:
-  stirring:
-    actions:
-      - type: start
-        hours_elapsed: 0.0
-      - type: stop
-        hours_elapsed: 10.0
-  temperature_control:
-    actions:
-      - type: stop
-        hours_elapsed: 10.0
+  jobs:
+    stirring:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+        - type: stop
+          hours_elapsed: 10.0
+    temperature_control:
+      actions:
+        - type: stop
+          hours_elapsed: 10.0
 
 pioreactors:
-  hot:
+  worker1:
+    label: hot
     jobs:
       temperature_control:
         actions:
@@ -30,7 +29,8 @@ pioreactors:
             options:
               automation_name: thermostat
               target_temperature: 38
-  cold:
+  worker2:
+    label: cold
     jobs:
       temperature_control:
         actions:
