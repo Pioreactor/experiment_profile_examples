@@ -10,25 +10,26 @@ metadata:
     After 24 hours, the temperature in pio-dev-02 will increase by 4 C every four hours until it reaches a maximum of 50 C, after which the temperature stays constant.
 
 common:
-  stirring:
-    actions:
-      - type: start
-        hours_elapsed: 0.0
-  dosing_control:
-    actions:
-      - type: start
-        hours_elapsed: 0.0
-        options:
-          automation_name: chemostat
-          volume: 1.0
-          duration: 20
-  temperature_control:
-    actions:
-      - type: start
-        hours_elapsed: 0.0
-        options:
-          automation_name: thermostat
-          target_temperature: 35
+  jobs:
+    stirring:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+    dosing_control:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+          options:
+            automation_name: chemostat
+            volume: 1.0
+            duration: 20
+    temperature_control:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+          options:
+            automation_name: thermostat
+            target_temperature: 35
 
 pioreactors:
   pio-dev-00:
