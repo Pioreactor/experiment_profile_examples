@@ -4,20 +4,18 @@ metadata:
   author: Cam Davidson-Pilon
   description: A profile to immediately start stirring on three Pioreactors, but different temperatures. Also have aliases
 
-labels:
-  worker1: cool_32_5
-  worker2: control_35_0
-  worker3: hot_37_5
 
 common:
-  stirring:
-    actions:
-      - type: start
-        hours_elapsed: 0.0
-        options:
-          target_rpm: 500.0
+  jobs:
+    stirring:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+          options:
+            target_rpm: 500.0
 
 worker1:
+  label: cool_32_5
   jobs:
     temperature_control:
       actions:
@@ -28,6 +26,7 @@ worker1:
             target_temperature: 32.5
 
 worker2:
+  label: control_35_0
   jobs:
     temperature_control:
       actions:
@@ -38,6 +37,7 @@ worker2:
             target_temperature: 35
 
 worker3:
+  label: hot_37_5
   jobs:
     temperature_control:
       actions:
