@@ -5,19 +5,20 @@ metadata:
   author: Cam DP
  
 common:
-  remove_waste:
-    actions:
-      - type: start
-        hours_elapsed: 0.0
-        options:
-           continuously: true
-      - type: stop
-        hours_elapsed: 0.033
-  add_media:
-    actions:
-      - type: start
-        hours_elapsed: 0.002
-        options:
-           continuously: true
-      - type: stop
-        hours_elapsed: 0.03
+  jobs:
+    remove_waste:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+          options:
+             continuously: true
+        - type: stop
+          hours_elapsed: 0.033
+    add_media:
+      actions:
+        - type: start
+          hours_elapsed: 0.002
+          options:
+             continuously: true
+        - type: stop
+          hours_elapsed: 0.03
