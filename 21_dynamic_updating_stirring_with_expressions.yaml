@@ -12,8 +12,8 @@ pioreactors:
           - type: start
             hours_elapsed: 0
             options:
-              - target_rpm: 500
+              target_rpm: 500
           - type: update
             hours_elapsed: 12
             options:
-              - target_rpm: ${{ worker1:stirring:target_rpm + worker1:od_reading:od1.od * 10 }}
+              target_rpm: ${{ worker1:stirring:target_rpm + worker1:od_reading:od1.od * 10 }}
