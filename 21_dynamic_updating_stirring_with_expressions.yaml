@@ -1,0 +1,19 @@
+experiment_profile_name: 21_dynamic_updating_stirring_with_expressions
+
+metadata:
+  author: Cam Davidson-Pilon
+  description: After 12 hours, updates how fast the Pioreactor stirs based on the current OD value. 
+
+pioreactors:
+  worker1:
+    jobs:
+      stirring:
+        actions:
+          - type: start
+            hours_elapsed: 0
+            options:
+              - target_rpm: 500
+          - type: update
+            hours_elapsed: 12
+            options:
+              - target_rpm: ${{ worker1:stirring:target_rpm + worker1:od_reading:od1.od * 10 }}
