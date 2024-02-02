@@ -1,0 +1,19 @@
+experiment_profile_name: increasing_rpm_with_od
+
+metadata:
+  author: Cam Davidson-Pilon
+  description: A simple profile that increases RPM with increasing nOD
+
+pioreactors:
+  testing_unit:
+    jobs:
+      stirring:
+        actions: # after 1 hour, every 1 hour, we increase the RPM in proportion to increases in nOD
+          - type: repeat
+            hours_elapsed: 1
+            interval: 1
+            actions:
+              - type: update
+                hours_elapsed: 0
+                options:
+                  target_rpm: ${{testing_unit:stirring:target_rpm + 10 * (testing_unit:growth_rate_calculating:od_filtered.od_filtered - 1) }}

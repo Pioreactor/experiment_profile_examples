@@ -1,0 +1,53 @@
+experiment_profile_name: repeated_temperature_cycle
+
+metadata:
+  author: Cameron
+  description: This profile changes the temperature in a complex pattern over a 48-hour cycle.
+
+common:
+  jobs:
+    temperature_control:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+          options:
+            automation_name: thermostat
+            target_temperature: 28
+    temperature_automation:
+      actions:
+        - type: repeat
+          hours_elapsed: 6.0
+          repeat_every_hours: 48
+          actions:
+            - type: update
+              hours_elapsed: 0.0
+              options:
+                target_temperature: 30
+            - type: update
+              hours_elapsed: 6.0
+              options:
+                target_temperature: 32
+            - type: update
+              hours_elapsed: 12.0
+              options:
+                target_temperature: 34
+            - type: update
+              hours_elapsed: 18.0
+              options:
+                target_temperature: 36
+            - type: update
+              hours_elapsed: 24.0
+              options:
+                target_temperature: 34
+            - type: update
+              hours_elapsed: 30.0
+              options:
+                target_temperature: 32
+            - type: update
+              hours_elapsed: 36.0
+              options:
+                target_temperature: 30
+            - type: update
+              hours_elapsed: 42.0
+              options:
+                target_temperature: 28
