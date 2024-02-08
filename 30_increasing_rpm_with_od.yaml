@@ -11,7 +11,7 @@ pioreactors:
         actions: # after 1 hour, every 1 hour, we increase the RPM in proportion to increases in nOD
           - type: repeat
             hours_elapsed: 1
-            interval: 1
+            repeat_every_hours: 1
             actions:
               - type: update
                 hours_elapsed: 0
