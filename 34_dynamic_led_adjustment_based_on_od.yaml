@@ -23,6 +23,7 @@ common:
           repeat_every_hours: 0.5
           actions:
             - type: update
+              hours_elapsed: 0.0
               if: ${::od_reading:od1.od > 1.0} # Adjust this threshold as needed
               options:
                 # Dynamically adjust the LED intensity based on OD reading; modify formula as needed
