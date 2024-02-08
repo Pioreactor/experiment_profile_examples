@@ -21,7 +21,7 @@ common:
               hours_elapsed: 0.0
               options:
                 target_rpm: ${{::stirring:target_rpm + 100}}
-           - type: update
+            - type: update
               hours_elapsed: 0.25
               options:
                 target_rpm: ${{::stirring:target_rpm - 50}}
