@@ -6,16 +6,17 @@ metadata:
 
 common:
   jobs:
-    dosing_control: 
-      - type: start
-        hours_elapsed: 0.0
-        options:
-          automation_name: chemostat
-          duration: 30
-          volume: 0.75
-    dosing_automation:
-      - type: update
-        hours_elapsed: 24
-        options:
-          volume: 1.5
+    actions:
+      dosing_control:
+        - type: start
+          hours_elapsed: 0.0
+          options:
+            automation_name: chemostat
+            duration: 30
+            volume: 0.75
+      dosing_automation:
+        - type: update
+          hours_elapsed: 24
+          options:
+            volume: 1.5
 
