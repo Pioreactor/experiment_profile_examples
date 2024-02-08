@@ -1,0 +1,30 @@
+experiment_profile_name: dynamic_led_adjustment_based_on_od
+
+metadata:
+  author: Your Name
+  description: Dynamically updates LED intensity based on increases in OD reading.
+
+common:
+  jobs:
+    od_reading:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+    led_intensity:
+      actions:
+        - type: start
+          hours_elapsed: 0.0
+          options:
+            # Set initial LED intensity values; adjust these as needed
+            B: 50
+            C: 50
+        - type: repeat
+          hours_elapsed: 0.5 # Check every 0.5 hours, adjust the interval as needed
+          repeat_every_hours: 0.5
+          actions:
+            - type: update
+              if: ${::od_reading:od1.od > 1.0} # Adjust this threshold as needed
+              options:
+                # Dynamically adjust the LED intensity based on OD reading; modify formula as needed
+                B: ${{::leds:intensity.B + (::od_reading:od1.od - 1) * 10}}
+                C: ${{::leds:intensity.C + (::od_reading:od1.od - 1) * 10}}
