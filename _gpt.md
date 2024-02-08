@@ -149,28 +149,6 @@ There is more control using the other optional fields:
  - `while`: this is an expression, like `if`, that runs at the start of each loop, including the first. For example, the following profile will run media until the OD is less than 3.0. We also remove waste so we don't overflow the vial. This is a really coarse turbidostat, and is just for demonstration - don't use this:
  - You can also use the `if` directive to skip running the entire `repeat` action, too.
 
-   ``
-   add_media:
-     actions:
-       - type: repeat
-         hours_elapsed: 6.0
-         repeat_every_hours: 0.0025 # every 9 seconds
-         while: ${{ worker1:od_reading:od1.od > 3.0 }}
-         actions:
-           - type: start
-             options:
-               volume: 1
-   remove_waste:
-     actions:
-       - type: repeat
-         hours_elapsed: 6.0
-         repeat_every_hours: 0.0025 # every 9 seconds
-         while: ${{ worker1:od_reading:od1.od > 3.0 }}
-         actions:
-           - type: start
-             options:
-               volume: 1.5
-   ``
 
 A common task is to start the thermostat, and you may want to do something like:
 ``

@@ -1,0 +1,21 @@
+experiment_profile_name: custom_chemostat
+
+metadata:
+  author: Your Name
+  description: Custom chemostat operation maintaining constant culture volume and nutrient availability. Update after 24h.
+
+common:
+  jobs:
+    dosing_control: 
+      - type: start
+        hours_elapsed: 0.0
+        options:
+          automation_name: chemostat
+          duration: 30
+          volume: 0.75
+    dosing_automation:
+      - type: update
+        hours_elapsed: 24
+        options:
+          volume: 1.5
+
