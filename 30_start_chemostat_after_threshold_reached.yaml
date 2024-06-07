@@ -1,0 +1,44 @@
+experiment_profile_name: custom_chemostat_pr1
+
+metadata:
+  author: Your Name
+  description: Custom chemostat operation for Pioreactor pr1. Chemostat operation starts after the nOD >= 30, maintaining constant stirring and temperature, with a dilution rate of 0.3 h⁻¹ (0.63 mL every 9 minutes) and growth rate estimation.
+
+pioreactors:
+  pr1:
+    jobs:
+      stirring:
+        actions:
+          - type: start
+            hours_elapsed: 0.0
+            options:
+              target_rpm: 650.0
+      temperature_control:
+        actions:
+          - type: start
+            hours_elapsed: 0.0
+            options:
+              automation_name: thermostat
+              target_temperature: 30.0
+      od_reading:
+        actions:
+          - type: start
+            hours_elapsed: 0.0
+      growth_rate_calculating:
+        actions:
+          - type: start
+            hours_elapsed: 0.0
+      dosing_control:
+        actions:
+          - type: repeat
+            hours_elapsed: 0.08 # start after 5m
+            repeat_every_hours: 0.08 # check every ~5m
+            while: pr1:growth_rate_calculating:od_filtered.od_filtered <= 30 
+            actions:
+              - type: start
+                hours_elapsed: 0.079
+                if: pr1:growth_rate_calculating:od_filtered.od_filtered > 30
+                options:
+                  automation_name: chemostat
+                  volume: 0.63
+                  duration: 9 # In minutes, which translates to 0.1 mL every 2.1 minutes
