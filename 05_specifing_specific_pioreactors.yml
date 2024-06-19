@@ -14,35 +14,36 @@ common:
           options:
             target_rpm: 500.0
 
-worker1:
-  label: cool_32_5
-  jobs:
-    temperature_control:
-      actions:
-        - type: start
-          hours_elapsed: 0.0
-          options:
-            automation_name: thermostat
-            target_temperature: 32.5
-
-worker2:
-  label: control_35_0
-  jobs:
-    temperature_control:
-      actions:
-        - type: start
-          hours_elapsed: 0.0
-          options:
-            automation_name: thermostat
-            target_temperature: 35
-
-worker3:
-  label: hot_37_5
-  jobs:
-    temperature_control:
-      actions:
-        - type: start
-          hours_elapsed: 0.0
-          options:
-            automation_name: thermostat
-            target_temperature: 37.5
+pioreactors:
+  worker1:
+    label: cool_32_5
+    jobs:
+      temperature_control:
+        actions:
+          - type: start
+            hours_elapsed: 0.0
+            options:
+              automation_name: thermostat
+              target_temperature: 32.5
+  
+  worker2:
+    label: control_35_0
+    jobs:
+      temperature_control:
+        actions:
+          - type: start
+            hours_elapsed: 0.0
+            options:
+              automation_name: thermostat
+              target_temperature: 35
+  
+  worker3:
+    label: hot_37_5
+    jobs:
+      temperature_control:
+        actions:
+          - type: start
+            hours_elapsed: 0.0
+            options:
+              automation_name: thermostat
+              target_temperature: 37.5
