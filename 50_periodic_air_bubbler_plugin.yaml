@@ -1,0 +1,27 @@
+experiment_profile_name: air_bubbler_with_periodic_activity
+
+metadata:
+  author: Cameron Davidson
+  description: Starts the air bubbler immediately, pauses it, and turns on the pump every 30 minutes for 1 minute.
+
+plugins:
+  - name: air_bubbler
+    version: >=0.5.0
+
+pioreactors:
+  pio1:
+    jobs:
+      air_bubbler:
+        actions:
+          - type: start
+            hours_elapsed: 0.0
+          - type: pause
+            hours_elapsed: 0.01666667 # 1 minute in hours
+          - type: repeat
+            hours_elapsed: 0.5
+            repeat_every_hours: 0.5
+            actions:
+              - type: resume
+                hours_elapsed: 0.0
+              - type: pause
+                hours_elapsed: 0.01666667 
