@@ -6,7 +6,7 @@ metadata:
 
 plugins:
   - name: air_bubbler
-    version: >=0.5.0
+    version: ">=0.5.0"
 
 pioreactors:
   pio1:
