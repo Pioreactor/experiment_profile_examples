@@ -1,4 +1,4 @@
-experiment_profile_name: pump_cleaning_script
+experiment_profile_name: pump cleaning script
 
 metadata:
   description: This starts the waste pump on all Pioreactors, then the media pump, and runs both for X seconds and Y seconds respectively.
