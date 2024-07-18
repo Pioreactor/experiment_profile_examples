@@ -13,7 +13,7 @@ pioreactors:
             hours_elapsed: 0.0
             options:
               target_rpm: 650.0
-      temperature_control:
+      temperature_automation:
         actions:
           - type: start
             hours_elapsed: 0.0
@@ -28,7 +28,7 @@ pioreactors:
         actions:
           - type: start
             hours_elapsed: 0.0
-      dosing_control:
+      dosing_automation:
         actions:
           - type: repeat
             hours_elapsed: 0.08 # start after 5m

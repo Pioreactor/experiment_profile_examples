@@ -6,15 +6,13 @@ metadata:
 
 common:
   jobs:
-    temperature_control:
+    temperature_automation:
       actions:
         - type: start
           hours_elapsed: 0.0
           options:
             automation_name: thermostat
             target_temperature: 28
-    temperature_automation:
-      actions:
         - type: repeat
           hours_elapsed: 6.0
           repeat_every_hours: 48

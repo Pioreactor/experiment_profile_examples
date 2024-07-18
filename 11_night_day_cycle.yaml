@@ -16,7 +16,7 @@ common:
       actions:
         - type: start
           hours_elapsed: 0.0
-    led_control:
+    led_automation:
       actions:
         - type: start
           hours_elapsed: 0.0

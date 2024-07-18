@@ -13,7 +13,7 @@ common:
           hours_elapsed: 0.0
         - type: stop
           hours_elapsed: 10.0
-    temperature_control:
+    temperature_automation:
       actions:
         - type: stop
           hours_elapsed: 10.0
@@ -22,7 +22,7 @@ pioreactors:
   worker1:
     label: hot
     jobs:
-      temperature_control:
+      temperature_automation:
         actions:
           - type: start
             hours_elapsed: 0.0
@@ -32,7 +32,7 @@ pioreactors:
   worker2:
     label: cold
     jobs:
-      temperature_control:
+      temperature_automation:
         actions:
           - type: start
             hours_elapsed: 0.0

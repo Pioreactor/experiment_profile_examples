@@ -15,7 +15,7 @@ common:
       actions:
         - type: start
           hours_elapsed: 0.0
-    dosing_control:
+    dosing_automation:
       actions:
         - type: start
           hours_elapsed: 0.0
@@ -23,7 +23,7 @@ common:
             automation_name: chemostat
             volume: 1.0
             duration: 20
-    temperature_control:
+    temperature_automation:
       actions:
         - type: start
           hours_elapsed: 0.0

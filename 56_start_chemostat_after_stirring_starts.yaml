@@ -1,0 +1,26 @@
+experiment_profile_name: start_chemostat_after_stirring_starts
+metadata:
+  author: Your Name
+  description: Start chemostat when stirring starts
+
+common:
+  jobs:
+    stirring:
+      actions:
+        - type: start
+          hours_elapsed: 0.002
+    dosing_automation:
+      actions:
+        - type: when
+          condition: ${{::stirring:$state == ready}}
+          hours_elapsed: 0
+          actions:
+            - type: start
+              hours_elapsed: 0
+              options:
+                automation_name: chemostat
+                volume: 0.63
+                duration: 9
+
+
+
