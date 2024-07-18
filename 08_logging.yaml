@@ -15,7 +15,7 @@ common:
         - type: log
           hours_elapsed: 0.025
           options:
-            message: "{job} increasing to 800 RPM" # alerts the message: "stirring increasing to 800 RPM"
+            message: "${{job_name()}} increasing to 800 RPM" # alerts the message: "stirring increasing to 800 RPM"
         - type: update
           hours_elapsed: 0.025
           options:
@@ -31,5 +31,5 @@ pioreactors:
           - type: log
             hours_elapsed: 0.01
             options:
-              message: "Hello {unit} and {job} and {experiment}" # alerts the message "Hello worker1 and od_reading and _testing_experiment"
+              message: "Hello ${{unit()}} and ${{job_name()}} and ${{experiment()}}" # alerts the message "Hello worker1 and od_reading and _testing_experiment"
               level: INFO # by default, it's NOTICE level. Can be DEBUG, INFO, NOTICE, WARNING, ERROR
