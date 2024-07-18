@@ -30,14 +30,12 @@ pioreactors:
             hours_elapsed: 0.0
       dosing_automation:
         actions:
-          - type: repeat
+          - type: when
             hours_elapsed: 0.08 # start after 5m
-            repeat_every_hours: 0.08 # check every ~5m
-            while: pr1:growth_rate_calculating:od_filtered.od_filtered <= 30 
+            condition: pr1:growth_rate_calculating:od_filtered.od_filtered > 30
             actions:
               - type: start
-                hours_elapsed: 0.079
-                if: pr1:growth_rate_calculating:od_filtered.od_filtered > 30
+                hours_elapsed: 0.0
                 options:
                   automation_name: chemostat
                   volume: 0.63
