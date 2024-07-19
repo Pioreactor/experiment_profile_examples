@@ -1,4 +1,7 @@
-Experiment profiles are a way to automate your Pioreactor's actions from a flat YAML file. 
+Experiment profiles are a way to automate your Pioreactor's actions from a flat YAML file. Think of it as creating a "script", that a colleagues precisely follows, to control your Pioreactors.
+
+Users can create profiles to control all of their pioreactors (using the `common` block), or specific unique actions per pioreactor (using the `pioreactor` block). In the `pioreactor` block, we have subsections based on the worker names (like `worker01`, `worker02`, or `pr01`, etc.). 
+
 
 The `if` directive can be included in any action to conditionally execute it or not. The `if` statement is evaluated _when the action is to be executed_ (i.e., when `elapsed_hours` has passed).
 
@@ -12,7 +15,7 @@ The operators addition `+`, `-`, `*`, and `/` are allowed on floats, as well. Th
 Expressions are the method used to get is dynamic data, provided from jobs, during execution of profiles. For example, the following:
 
 ``
-pio1::stirring::target_rpm
+pio1:stirring:target_rpm
 ``
 
 will fetch the `target_rpm` from `pio1`'s `stirring` job at the time the action is to be executed. To use this in an example:
@@ -22,7 +25,7 @@ will fetch the `target_rpm` from `pio1`'s `stirring` job at the time the action 
      ...
      - type: update
        hours_elapsed: 6.0
-       if: pio1::stirring::target_rpm >= 500
+       if: pio1:stirring:target_rpm >= 500
        options:
          target_rpm: 400
 
@@ -33,11 +36,11 @@ will check, after 6 hours, if the `target_rpm` is above 500, and if true, will u
 You can also compare against strings. For example, to stop a job if the temperature automation running is equal to `thermostat`, use:
 
 ``
-    temperature_control:
+    temperature_automation:
      ...
      - type: stop
        hours_elapsed: 6.0
-       if: pio1::temperature_control::automation_name == thermostat
+       if: pio1:temperature_automation:automation_name == thermostat
 ``
 
 Where do these dynamic values come from? Each job has `published_settings` that can be referenced (refer to the job's source code to all `published_settings` for a job, or they are published in MQTT).
@@ -49,7 +52,7 @@ Some published settings have are actually nested json blobs, but we need either 
      ...
      - type: update
        hours_elapsed: 6.0
-       if: pio1::temperature_control::temperature.temperature <= 30
+       if: pio1:temperature_automation:temperature.temperature <= 30
        options:
          target_temperature: 32
 ``
@@ -149,73 +152,27 @@ There is more control using the other optional fields:
  - `while`: this is an expression, like `if`, that runs at the start of each loop, including the first. For example, the following profile will run media until the OD is less than 3.0. We also remove waste so we don't overflow the vial. This is a really coarse turbidostat, and is just for demonstration - don't use this:
  - You can also use the `if` directive to skip running the entire `repeat` action, too.
 
-
-A common task is to start the thermostat, and you may want to do something like:
+There is also a `when` action that will check for a condition (defined as an expression in the field `condition`), and when the condition is true, executes actions in the list `actions`. For example:
 ``
-# wrong, this won't work  ❌
-common:
-  jobs:
-    thermostat:
-      actions:
-        - type: start
-          hours_elapsed: 0.0
-          options:
-            target_temperature: 30
-
-``
-However, to start (and stop) automations (which the `thermostat` is), you actually need to use the controllers:
-
-``
-common:
-  jobs:
-    temperature_control:
-      actions:
-        - type: start
-          hours_elapsed: 0.0
-          options:
-            automation_name: thermostat
-            target_temperature: 30
+      dosing_automation:
+        actions:
+          - type: when
+            hours_elapsed: 0.08 # start after 5m
+            condition: pr1:growth_rate_calculating:od_filtered.od_filtered > 30
+            actions:
+              - type: start
+                hours_elapsed: 0.0
+                options:
+                  automation_name: chemostat
+                  volume: 0.63
+                  duration: 9 # In minutes, which translates to 0.1 mL every 2.1 minutes
 
 ``
 
-Likewise, to stop a automation, you need to stop the controller:
 
-``
-common:
-  jobs:
-    temperature_control:
-      actions:
-        - type: start
-          hours_elapsed: 0.0
-          options:
-            automation_name: thermostat
-            target_temperature: 30
-        - type: stop
-          hours_elapsed: 12.0
-
-``
-
-A setting like `target_temperature` or `volume` is attached to the automation, not a controller, so you need to update the automation:
-
-``
-common:
-  jobs:
-    temperature_control:
-      actions:
-        - type: start
-          hours_elapsed: 0.0
-          options:
-            automation_name: thermostat
-            target_temperature: 30
-        - type: stop
-          hours_elapsed: 12.0
-    temperature_automation: # this is thermostat
-        - type: update
-          hours_elapsed: 1.0
-          options:
-            target_temperature: 32
-        - type: update
-          hours_elapsed: 2.0
-          options:
-            target_temperature: 34
-``
+Newly introduced into expressions are the functions: 
+ - `random()` produces a random number between 0 and 1.
+ - `unit()` returns the unit the expression is running for
+ - `experiment()` returns the experiment the profile is running in
+ - `job_name()` returns the job name the expression is a part of
+ - `hours_elapsed()` returns the hours since the profile began
