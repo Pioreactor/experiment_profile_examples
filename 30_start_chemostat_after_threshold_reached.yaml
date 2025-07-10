@@ -38,5 +38,5 @@ pioreactors:
                 hours_elapsed: 0.0
                 options:
                   automation_name: chemostat
-                  volume: 0.63
+                  exchange_volume_ml: 0.63
                   duration: 9 # In minutes, which translates to 0.1 mL every 2.1 minutes

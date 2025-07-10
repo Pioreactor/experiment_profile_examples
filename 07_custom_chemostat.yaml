@@ -13,9 +13,9 @@ common:
           options:
             automation_name: chemostat
             duration: 30
-            volume: 0.75
+            exchange_volume_ml: 0.75
         - type: update
           hours_elapsed: 24
           options:
-            volume: 1.5
+            exchange_volume_ml: 1.5
 

@@ -19,7 +19,7 @@ common:
               hours_elapsed: 0
               options:
                 automation_name: chemostat
-                volume: 0.63
+                exchange_volume_ml: 0.63
                 duration: 9
 
 
