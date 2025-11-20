@@ -13,19 +13,19 @@ common:
     stirring:
       actions:
         - type: start
-          hours_elapsed: 0.0
+          t: 0.0
           options:
             target_rpm: 400.0
         - type: repeat
-          hours_elapsed: 1
-          while: ::stirring:target_rpm <= 1000
-          repeat_every_hours: 0.5
+          t: 1
+          while: ${{::stirring:target_rpm <= 1000}}
+          every: 0.5
           actions:
             - type: update
-              hours_elapsed: 0.0
+              t: 0.0
               options:
                 target_rpm: ${{::stirring:target_rpm + delta_up}}
             - type: update
-              hours_elapsed: 0.25
+              t: 0.25
               options:
                 target_rpm: ${{::stirring:target_rpm - delta_down}}

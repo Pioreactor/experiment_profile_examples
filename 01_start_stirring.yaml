@@ -9,4 +9,4 @@ common:
     stirring:
       actions:
         - type: start
-          hours_elapsed: 0.0
+          t: 0.0

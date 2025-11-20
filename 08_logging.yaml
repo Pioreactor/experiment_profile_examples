@@ -9,19 +9,19 @@ common:
     stirring:
       actions:
         - type: start
-          hours_elapsed: 0.0
+          t: 0.0
           options:
             target_rpm: 400.0
         - type: log
-          hours_elapsed: 0.025
+          t: 0.025
           options:
             message: "${{job_name()}} increasing to 800 RPM" # alerts the message: "stirring increasing to 800 RPM"
         - type: update
-          hours_elapsed: 0.025
+          t: 0.025
           options:
             target_rpm: 800.0
         - type: stop
-          hours_elapsed: 0.05
+          t: 0.05
 
 pioreactors:
   worker1:
@@ -29,7 +29,7 @@ pioreactors:
       od_reading:
         actions:
           - type: log
-            hours_elapsed: 0.01
+            t: 0.01
             options:
               message: "Hello ${{unit()}} and ${{job_name()}} and ${{experiment()}}" # alerts the message "Hello worker1 and od_reading and _testing_experiment"
               level: INFO # by default, it's NOTICE level. Can be DEBUG, INFO, NOTICE, WARNING, ERROR

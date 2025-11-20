@@ -1,0 +1,70 @@
+dosing_automation
+  automation: fed_batch
+    - dosing_volume_ml: {'datatype': 'float', 'unit': 'mL', 'settable': True}
+  automation: chemostat
+    - exchange_volume_ml: {'datatype': 'float', 'settable': True, 'unit': 'mL'}
+  automation: silent
+    - duration: {'datatype': 'float', 'settable': True, 'unit': 'min'}
+  automation: turbidostat
+    - exchange_volume_ml: {'datatype': 'float', 'settable': True, 'unit': 'mL'}
+    - target_normalized_od: {'datatype': 'float', 'settable': True, 'unit': 'AU'}
+    - target_od: {'datatype': 'float', 'settable': True, 'unit': 'OD'}
+  automation: pid_morbidostat
+    - exchange_volume_ml: {'datatype': 'float', 'settable': True, 'unit': 'mL'}
+    - target_normalized_od: {'datatype': 'float', 'settable': True, 'unit': 'AU'}
+    - target_growth_rate: {'datatype': 'float', 'settable': True, 'unit': 'h⁻¹'}
+
+growth_rate_calculating
+  - growth_rate: {'datatype': 'GrowthRate', 'settable': False, 'unit': 'h⁻¹'}
+  - od_filtered: {'datatype': 'ODFiltered', 'settable': False}
+  - kalman_filter_outputs: {'datatype': 'KalmanFilterOutput', 'settable': False}
+
+mqtt_to_db_streaming
+
+monitor
+  - computer_statistics: {'datatype': 'json', 'settable': False}
+  - button_down: {'datatype': 'boolean', 'settable': False}
+  - versions: {'datatype': 'json', 'settable': True}
+  - voltage_on_pwm_rail: {'datatype': 'Voltage', 'settable': False}
+  - ipv4: {'datatype': 'string', 'settable': False}
+  - wlan_mac_address: {'datatype': 'string', 'settable': False}
+  - eth_mac_address: {'datatype': 'string', 'settable': False}
+
+od_reading
+  - first_od_obs_time: {'datatype': 'float', 'settable': False}
+  - ir_led_intensity: {'datatype': 'float', 'settable': True, 'unit': '%'}
+  - interval: {'datatype': 'float', 'settable': True, 'unit': 's'}
+  - relative_intensity_of_ir_led: {'datatype': 'float', 'settable': False}
+  - ods: {'datatype': 'ODReadings', 'settable': False}
+  - od1: {'datatype': 'ODReading', 'settable': False}
+  - od2: {'datatype': 'ODReading', 'settable': False}
+  - raw_od1: {'datatype': 'RawODReading', 'settable': False}
+  - raw_od2: {'datatype': 'RawODReading', 'settable': False}
+  - calibrated_od1: {'datatype': 'CalibratedODReading', 'settable': False}
+  - calibrated_od2: {'datatype': 'CalibratedODReading', 'settable': False}
+
+temperature_automation
+  automation: only_record_temperature
+  automation: thermostat
+    - target_temperature: {'datatype': 'float', 'unit': '℃', 'settable': True}
+
+led_automation
+  automation: uv_morbidostat
+    - duration: {'datatype': 'float', 'settable': False, 'unit': 'min'}
+    - light_intensity: {'datatype': 'float', 'settable': False, 'unit': '%'}
+    - target_growth_rate: {'datatype': 'float', 'settable': True, 'unit': '%'}
+  automation: silent
+    - duration: {'datatype': 'float', 'settable': True, 'unit': 'min'}
+  automation: light_dark_cycle
+    - duration: {'datatype': 'float', 'settable': False, 'unit': 'min'}
+    - light_intensity: {'datatype': 'float', 'settable': True, 'unit': '%'}
+    - light_duration_minutes: {'datatype': 'integer', 'settable': True, 'unit': 'min'}
+    - dark_duration_minutes: {'datatype': 'integer', 'settable': True, 'unit': 'min'}
+
+stirring
+  - target_rpm: {'datatype': 'float', 'settable': True, 'unit': 'RPM'}
+  - measured_rpm: {'datatype': 'MeasuredRPM', 'settable': False, 'unit': 'RPM'}
+  - duty_cycle: {'datatype': 'float', 'settable': True, 'unit': '%'}
+  - target_rpm_during_od_reading: {'datatype': 'float', 'settable': True, 'unit': 'RPM'}
+  - target_rpm_outside_od_reading: {'datatype': 'float', 'settable': True, 'unit': 'RPM'}
+

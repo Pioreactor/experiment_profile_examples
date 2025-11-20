@@ -14,11 +14,11 @@ common:
     stirring:
       actions:
         - type: start
-          hours_elapsed: 0.0
+          t: 0.0
     dosing_automation:
       actions:
         - type: start
-          hours_elapsed: 0.0
+          t: 0.0
           options:
             automation_name: chemostat
             exchange_volume_ml: 1.0
@@ -26,23 +26,23 @@ common:
     temperature_automation:
       actions:
         - type: start
-          hours_elapsed: 0.0
+          t: 0.0
           options:
             automation_name: thermostat
             target_temperature: 35
 
 pioreactors:
   pio00:
-    jos:
+    jobs:
       temperature_automation:
         actions:
           - type: repeat
-            hours_elapsed: 24.0
-            repeat_every_hours: 2.0
+            t: 24.0
+            every: 2.0
             while: ${{ pio00:temperature_automation:target_temperature < 50 }}
             actions:
               - type: update
-                hours_elapsed: 0.0
+                t: 0.0
                 options:
                   target_temperature: ${{ pio00:temperature_automation:target_temperature + 2 }}
   pio001:
@@ -50,12 +50,12 @@ pioreactors:
       temperature_automation:
         actions:
           - type: repeat
-            hours_elapsed: 24.0
-            repeat_every_hours: 2.0
+            t: 24.0
+            every: 2.0
             while: ${{ pio001:temperature_automation:target_temperature < 50 }}
             actions:
               - type: update
-                hours_elapsed: 0.0
+                t: 0.0
                 options:
                   target_temperature: ${{ pio001:temperature_automation:target_temperature + 1 }}
 
@@ -64,11 +64,11 @@ pioreactors:
       temperature_automation:
         actions:
           - type: repeat
-            hours_elapsed: 24.0
-            repeat_every_hours: 4.0
+            t: 24.0
+            every: 4.0
             while: ${{ pio02:temperature_automation:target_temperature < 50 }}
             actions:
               - type: update
-                hours_elapsed: 0.0
+                t: 0.0
                 options:
                   target_temperature: ${{ pio02:temperature_automation:target_temperature + 4 }}

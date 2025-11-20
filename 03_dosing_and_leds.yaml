@@ -11,25 +11,25 @@ pioreactors:
       add_media:
         actions:
           - type: start
-            hours_elapsed: 0.0
+            t: 0.0
             options:
               ml: 14.0
           - type: start
-            hours_elapsed: 0.25
+            t: 0.25
             options:
               ml: 1.0
       led_intensity:
         actions:
           - type: start
-            hours_elapsed: 0.0
+            t: 0.0
             options:
               B: 50
               C: 50
           - type: update
-            hours_elapsed: 1.0
+            t: 1.0
             options:
               B: 25
               C: 25
               D: 100
           - type: stop
-            hours_elapsed: 1.5
+            t: 1.5

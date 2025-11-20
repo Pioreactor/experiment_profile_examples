@@ -9,17 +9,17 @@ common:
     stirring:
       actions:
         - type: start
-          hours_elapsed: 0.0
+          t: 0.0
           options:
             target_rpm: 500.0
     temperature_automation:
       actions:
         - type: start # this starts the temperature_automation thermostat
-          hours_elapsed: 0.0
+          t: 0.0
           options:
             automation_name: thermostat
             target_temperature: 30
         - type: update
-          hours_elapsed: 2.0
+          t: 2.0
           options:
             target_temperature: 35

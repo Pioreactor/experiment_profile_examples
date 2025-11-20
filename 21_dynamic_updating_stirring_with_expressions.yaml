@@ -10,10 +10,10 @@ pioreactors:
       stirring:
         actions:
           - type: start
-            hours_elapsed: 0
+            t: 0
             options:
               target_rpm: 500
           - type: update
-            hours_elapsed: 12
+            t: 12
             options:
               target_rpm: ${{ worker1:stirring:target_rpm + worker1:od_reading:od2.od * 10 }}

@@ -11,15 +11,15 @@ common:
     stirring:
       actions:
         - type: start
-          hours_elapsed: 0.0
+          t: 0.0
     od_reading:
       actions:
         - type: start
-          hours_elapsed: 0.0
+          t: 0.0
     led_automation:
       actions:
         - type: start
-          hours_elapsed: 0.0
+          t: 0.0
           options:
             automation_name: light_dark_cycle
             light_intensity: 50

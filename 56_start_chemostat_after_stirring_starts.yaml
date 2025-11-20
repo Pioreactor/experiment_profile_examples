@@ -8,15 +8,15 @@ common:
     stirring:
       actions:
         - type: start
-          hours_elapsed: 0.002
+          t: 0.002
     dosing_automation:
       actions:
         - type: when
-          condition: ${{::stirring:$state == ready}}
-          hours_elapsed: 0
+          wait_until: ${{::stirring:$state == ready}}
+          t: 0
           actions:
             - type: start
-              hours_elapsed: 0
+              t: 0
               options:
                 automation_name: chemostat
                 exchange_volume_ml: 0.63
