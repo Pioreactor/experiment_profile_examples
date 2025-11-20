@@ -2,7 +2,7 @@ experiment_profile_name: custom chemostat
 
 metadata:
   author: Cameron Davidson-Pilon
-  description: Custom chemostat operation maintaining constant culture volume and nutrient availability. Update after 24h. *Don't use this*
+  description: Custom chemostat operation maintaining constant culture volume and nutrient availability. Update after 24h.
 
 common:
   jobs:

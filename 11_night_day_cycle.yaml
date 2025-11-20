@@ -25,3 +25,4 @@ common:
             light_intensity: 50
             light_duration_minutes: 400
             dark_duration_minutes: 200
+            duration: 1

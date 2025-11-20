@@ -5,7 +5,7 @@ metadata:
   description: Starts the air bubbler immediately, pauses it, and turns on the pump every 30 minutes for 1 minute.
 
 plugins:
-  - name: air_bubbler
+  - name: pioreactor-air-bubbler
     version: ">=0.5.0"
 
 pioreactors:

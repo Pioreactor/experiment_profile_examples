@@ -4,6 +4,10 @@ metadata:
   author: Cam Davidson-Pilon
   description: A simple climbing RPM example
 
+inputs:
+  delta_up: 100.0
+  delta_down: 50.0
+
 common:
   jobs:
     stirring:
@@ -20,8 +24,8 @@ common:
             - type: update
               hours_elapsed: 0.0
               options:
-                target_rpm: ${{::stirring:target_rpm + 100}}
+                target_rpm: ${{::stirring:target_rpm + delta_up}}
             - type: update
               hours_elapsed: 0.25
               options:
-                target_rpm: ${{::stirring:target_rpm - 50}}
+                target_rpm: ${{::stirring:target_rpm - delta_down}}
