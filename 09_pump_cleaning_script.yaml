@@ -9,16 +9,16 @@ common:
     remove_waste:
       actions:
         - type: start
-          t: 0.0
+          t: 0s
           options:
              continuously: true
         - type: stop
-          t: 0.033
+          t: 1.98m
     add_media:
       actions:
         - type: start
-          t: 0.002
+          t: 7.2s
           options:
              continuously: true
         - type: stop
-          t: 0.03
+          t: 108s

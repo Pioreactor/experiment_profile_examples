@@ -9,21 +9,21 @@ common:
     od_reading:
       actions:
         - type: start
-          t: 0.0
+          t: 0s
     led_intensity:
       actions:
         - type: start
-          t: 0.0
+          t: 0s
           options:
             # Set initial LED intensity values; adjust these as needed
             B: 50
             C: 50
         - type: repeat
           t: 0.5 # Check every 0.5 hours, adjust the interval as needed
-          every: 0.5
+          every: 30m
           actions:
             - type: update
-              t: 0.0
+              t: 0s
               if: ${{::od_reading:od2.od > 1.0}} # Adjust this threshold as needed
               options:
                 # Dynamically adjust the LED intensity based on OD reading; modify formula as needed

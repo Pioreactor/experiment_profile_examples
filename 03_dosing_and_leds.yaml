@@ -11,25 +11,25 @@ pioreactors:
       add_media:
         actions:
           - type: start
-            t: 0.0
+            t: 0s
             options:
               ml: 14.0
           - type: start
-            t: 0.25
+            t: 15m
             options:
               ml: 1.0
       led_intensity:
         actions:
           - type: start
-            t: 0.0
+            t: 0s
             options:
               B: 50
               C: 50
           - type: update
-            t: 1.0
+            t: 1h
             options:
               B: 25
               C: 25
               D: 100
           - type: stop
-            t: 1.5
+            t: 90m

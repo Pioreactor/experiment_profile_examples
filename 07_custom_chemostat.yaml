@@ -9,13 +9,13 @@ common:
     dosing_automation:
       actions:
         - type: start
-          t: 0.0
+          t: 0s
           options:
             automation_name: chemostat
             duration: 30
             exchange_volume_ml: 0.75
         - type: update
-          t: 24
+          t: 1d
           options:
             exchange_volume_ml: 1.5
 

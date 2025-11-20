@@ -10,22 +10,22 @@ pioreactors:
       stirring:
         actions:
           - type: start
-            t: 0.0
+            t: 0s
             options:
               target_rpm: 500
       od_reading:
         actions:
           - type: log
             if: false
-            t: 0.001
+            t: 3.6s
             options:
               message: "I'm not executed"
           - type: log
             if: ${{10 > 5}} # true, obviously
-            t: 0.001
+            t: 3.6s
             options:
               message: "I am executed"
           - type: start
             if: ${{ (worker1:stirring:target_rpm >= 400) and (worker1:stirring:target_rpm <= 650) }} # maybe true?
-            t: 0.002
+            t: 7.2s
 

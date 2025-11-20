@@ -14,11 +14,11 @@ common:
     stirring:
       actions:
         - type: start
-          t: 0.0
+          t: 0s
     dosing_automation:
       actions:
         - type: start
-          t: 0.0
+          t: 0s
           options:
             automation_name: chemostat
             exchange_volume_ml: 1.0
@@ -26,7 +26,7 @@ common:
     temperature_automation:
       actions:
         - type: start
-          t: 0.0
+          t: 0s
           options:
             automation_name: thermostat
             target_temperature: 35
@@ -37,12 +37,12 @@ pioreactors:
       temperature_automation:
         actions:
           - type: repeat
-            t: 24.0
-            every: 2.0
+            t: 1d
+            every: 2h
             while: ${{ pio00:temperature_automation:target_temperature < 50 }}
             actions:
               - type: update
-                t: 0.0
+                t: 0s
                 options:
                   target_temperature: ${{ pio00:temperature_automation:target_temperature + 2 }}
   pio001:
@@ -50,12 +50,12 @@ pioreactors:
       temperature_automation:
         actions:
           - type: repeat
-            t: 24.0
-            every: 2.0
+            t: 1d
+            every: 2h
             while: ${{ pio001:temperature_automation:target_temperature < 50 }}
             actions:
               - type: update
-                t: 0.0
+                t: 0s
                 options:
                   target_temperature: ${{ pio001:temperature_automation:target_temperature + 1 }}
 
@@ -64,11 +64,11 @@ pioreactors:
       temperature_automation:
         actions:
           - type: repeat
-            t: 24.0
-            every: 4.0
+            t: 1d
+            every: 4h
             while: ${{ pio02:temperature_automation:target_temperature < 50 }}
             actions:
               - type: update
-                t: 0.0
+                t: 0s
                 options:
                   target_temperature: ${{ pio02:temperature_automation:target_temperature + 4 }}

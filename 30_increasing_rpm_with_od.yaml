@@ -10,10 +10,10 @@ pioreactors:
       stirring:
         actions: # after 1 hour, every 1 hour, we increase the RPM in proportion to increases in nOD
           - type: repeat
-            t: 1
-            every: 1
+            t: 1h
+            every: 1h
             actions:
               - type: update
-                t: 0
+                t: 0s
                 options:
                   target_rpm: ${{testing_unit:stirring:target_rpm + 10 * (testing_unit:growth_rate_calculating:od_filtered.od_filtered - 1) }}

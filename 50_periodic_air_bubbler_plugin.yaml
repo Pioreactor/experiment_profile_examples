@@ -14,14 +14,14 @@ pioreactors:
       air_bubbler:
         actions:
           - type: start
-            t: 0.0
+            t: 0s
           - type: pause
             t: 0.01666667 # 1 minute in hours
           - type: repeat
-            t: 0.5
-            every: 0.5
+            t: 30m
+            every: 30m
             actions:
               - type: resume
-                t: 0.0
+                t: 0s
               - type: pause
-                t: 0.01666667
+                t: 1m

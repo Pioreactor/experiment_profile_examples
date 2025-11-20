@@ -10,13 +10,13 @@ common:
     stirring:
       actions:
         - type: start
-          t: 0.0
+          t: 0s
         - type: stop
-          t: 10.0
+          t: 10h
     temperature_automation:
       actions:
         - type: stop
-          t: 10.0
+          t: 10h
 
 pioreactors:
   worker1:
@@ -25,7 +25,7 @@ pioreactors:
       temperature_automation:
         actions:
           - type: start
-            t: 0.0
+            t: 0s
             options:
               automation_name: thermostat
               target_temperature: 38
@@ -35,7 +35,7 @@ pioreactors:
       temperature_automation:
         actions:
           - type: start
-            t: 0.0
+            t: 0s
             options:
               automation_name: thermostat
               target_temperature: 28

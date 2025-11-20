@@ -10,24 +10,24 @@ pioreactors:
       stirring:
         actions:
           - type: start
-            t: 0.0
+            t: 0s
             options:
               target_rpm: 650.0
       temperature_automation:
         actions:
           - type: start
-            t: 0.0
+            t: 0s
             options:
               automation_name: thermostat
               target_temperature: 30.0
       od_reading:
         actions:
           - type: start
-            t: 0.0
+            t: 0s
       growth_rate_calculating:
         actions:
           - type: start
-            t: 0.0
+            t: 0s
       dosing_automation:
         actions:
           - type: when
@@ -35,7 +35,7 @@ pioreactors:
             wait_until: ${{pr1:growth_rate_calculating:od_filtered.od_filtered > 30}}
             actions:
               - type: start
-                t: 0.0
+                t: 0s
                 options:
                   automation_name: chemostat
                   exchange_volume_ml: 0.63
