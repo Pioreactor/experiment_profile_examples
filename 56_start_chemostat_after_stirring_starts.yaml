@@ -1,3 +1,5 @@
+version: "1.0"
+
 experiment_profile_name: start_chemostat_after_stirring_starts
 metadata:
   author: Your Name
@@ -21,6 +23,4 @@ common:
                 automation_name: chemostat
                 exchange_volume_ml: 0.63
                 duration: 9
-
-
 

@@ -1,3 +1,5 @@
+version: "1.0"
+
 experiment_profile_name: air bubbler with periodic activity
 
 metadata:

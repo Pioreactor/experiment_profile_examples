@@ -1,3 +1,5 @@
+version: "1.0"
+
 experiment_profile_name: conditional statements
 
 metadata:
@@ -28,4 +30,3 @@ pioreactors:
           - type: start
             if: ${{ (worker1:stirring:target_rpm >= 400) and (worker1:stirring:target_rpm <= 650) }} # maybe true?
             t: 7.2s
-

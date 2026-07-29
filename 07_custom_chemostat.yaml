@@ -1,3 +1,5 @@
+version: "1.0"
+
 experiment_profile_name: custom chemostat
 
 metadata:
@@ -18,4 +20,3 @@ common:
           t: 1d
           options:
             exchange_volume_ml: 1.5
-

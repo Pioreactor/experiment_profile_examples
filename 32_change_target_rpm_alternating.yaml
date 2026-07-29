@@ -1,3 +1,5 @@
+version: "1.0"
+
 experiment_profile_name: demo stirring repeat
 
 metadata:
